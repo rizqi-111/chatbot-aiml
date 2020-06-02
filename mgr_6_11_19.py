@@ -51,36 +51,40 @@ def append_pattern(filename,pattern,template): #parameter berupa filename,patter
     file.close() #menutup file
     f.close() #menutup file
 
-def replace_template(): #parameter berupa pattern atau tempalte yg diubah
-    file = open("basic_chat.aiml") #open file untuk membaca
+def replace_template(filename): #parameter berupa pattern atau tempalte yg diubah
+    file = open(filename) #open file untuk membaca
     
     con = file.readlines() #menyimpan file ke dalam list
-    idx_temp = get_index("basic_chat.aiml","<template>no answer</template>"+"\n") #mendapatkan index template yg diinginkan
+    idx_temp = get_index(filename,"<template>no answer</template>"+"\n") #mendapatkan index template yg diinginkan
 
-    f = open("basic_chat.aiml","w") #open file untuk menulis teks
+    f = open(filename,"w") #open file untuk menulis teks
 
     con[idx_temp] = "<template>"+"blalalalacccc"+temp2
     f.writelines(con)
     file.closef
     f.close
 
+def clear_aiml(filename):
+    file = open(filename,"r+") #open file untuk membaca
+    file.truncate(0)
+    header = '<aiml version="1.0.1" encoding="UTF-8">\n\n</aiml>'
+    file.writelines(header)
+    file.close()
+
 def make_regex(pattern): #parameter berupa pattern aiml (string)
     list = re.split("\s",pattern) #memotong \s (spasi) pada kalimat pattern
-    i = 1 #inisialisasi variabel i
     s = "" #inisialisasi variabel s (string)
-    a = len(list) #inisialisasi varibel a dengan panjang/jumlah kata dalam list
+    
     for x in list: #mengisi variabel x dengan list
         if (x != "*"): #jika ditemukan "*" maka tidak dimasukkan dalam s
             if (len(s) != 0): 
                 s += "|" # "|" ditambahkan jika s tidak kosong
             s += x #menambahkan x ke dalam s
-            i += 1
-        else : #jika ditemukan "*" maka a (panjang/banyak kata dalam pattern) berkurang 1
-            a -= 1
+
     if not s: #jika s kosong
         reg = ""
     else:
-        reg = re.compile(s,re.I|re.VERBOSE)
+        reg = re.compile(s,re.VERBOSE)
     return (reg)
 
 def leng_str(stri):
@@ -92,45 +96,47 @@ def get_percent(pattern,question): #parameter berupa pattern (string) dan pertan
     reg = make_regex(pattern)  #mengubah pattern (string) ke dalam format regex
     if reg: #jika reg tidak kosong
         m = re.findall(reg,question) #mencari kata dalam reg pada question
-        print("m = ",m)
-        if not m: #jika m kosong
+        y = set(m) #menghapus duplicate tuples from list
+        # print("m = ",m)
+        if '' in y:
+            y.remove('')
+        if not y: #jika y kosong
             x = 0 
             return x
         
-        n = len(m) #menghitung jumlah / banyak kata(pattern) yg ditemukan pada question
+        n = len(y) #menghitung jumlah / banyak kata(pattern) yg ditemukan pada question
         p = leng_str(pattern) #menghitung jumlah / banyak kata dalam pattern
-
+        # print("y = ",y)
+        # print("n = ",n," p = ",p)
         x = round(((n / p)*100),2)
-        print("regex = ",reg)
+        # print("regex = ",reg)
     return x
-
-print(get_percent("berapa ukt prodi if","berapa berapa berapa"))
 
 def get_respon(filename, question): #parameter berupa filename (string) dan question (string)
     kernel = aiml.Kernel() #memanggil kelas kernel pada library aiml
     kernel.learn(filename) #mengisi dan mempelajari isi file aiml kepada kernel
-    threshold = 65.00 #inisialisasi variabel nilai ambang batas similaritas
+    threshold = 55.00 #inisialisasi variabel nilai ambang batas similaritas
     max1 = 0.00 #inisialisasi variabel nilai similaritas tertinggi
     v1 = "" #inisialiasi variabel string pattern dengan nilai similaritas tertinggi
     b = print_pattern(filename) #menyimpan seluruh pattern pada file aiml ke dalam b
     for v in b: #mengisi variabel b ke dalam v
         value = get_percent(v,question) #menyimpan nilai similaritas ke dalam value
-        print("v = ",v,"value = ",value,"\n") 
+        # print("Pattern = ",v,"\nNilai = ",value,"\n") 
         if(max1 < value): #jika value lebih besar dari nilai tertinggi saat ini
             #print("v = ",v,"value = ",value) 
             max1 = value #nilai tertinggi saat ini berubah
             v1 = v #variabel string pattern berubah
     if(max1 > threshold): #jika nilai similaritas lebih dari threshold
-        result = (kernel.respond(v1),v1) #mengabil respon/template dengan pattern v1 dalam kernel 
+        result = (kernel.respond(v1),v1,max1) #mengabil respon/template dengan pattern v1 dalam kernel 
     else: #jika tidak ditemukan kemiripan atau nilai similaritas kurang dari threshold
-        result = "Tidak ditemukan jawaban" 
+        result = (1)
         #pertanyaan disimpan di database untuk dikirimkan ke pakar
     return result
 
 def retrieve2(question):
     max1 = max2 = max3 = 0.00
     v1 = v2 = v3 = ""
-    b = print_pattern("basic_chat.aiml")
+    b = print_pattern("ask.aiml")
     for v in b:
         value = get_percent(v,question)
         if(max1==0.00 and max2==0.00 and max3==0.00):
@@ -153,4 +159,3 @@ def retrieve2(question):
     # print("V1 = ",v1,"V2 = ",v2,"V3 = ",v3)
     result = (v1,max1,v2,max2,v3,max3)
     return result
-
