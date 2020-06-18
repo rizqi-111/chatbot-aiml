@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <aiml version="1.0.1" encoding="UTF-8">
 <!-- basic_chat.aiml -->
 
@@ -10,6 +9,21 @@
 <category>
 <pattern>kapan upload bayar ukt</pattern>
 <template>Upload bayar UKT setelah nilai UKT keluar ya</template>
+</category>
+
+<category>
+<pattern>izin bertanya kak</pattern>
+<template>
+	<random>
+	<li>Silahkan</li>
+	<li>Boleh</li>
+	</random> 
+</template>
+</category>
+
+<category>
+<pattern>Assalamualaikum wr wb</pattern>
+<template>Walaikumsalam wr wb</template>
 </category>
 
 <category>
@@ -157,158 +171,9 @@
 <template>baik baik saja</template>
 </category>
 
-=======
-<aiml version="1.0.1" encoding="UTF-8">
-<!-- basic_chat.aiml -->
-
 <category>
-<pattern>*</pattern>
-<template>Mohon tunggu, panitia akan menjawab langsung pertanyaan anda</template>
-</category>
-
-<category>
-<pattern>kapan upload bayar ukt</pattern>
-<template>Upload bayar UKT setelah nilai UKT keluar ya</template>
-</category>
-
-<category>
-<pattern>apakah raport dilegalisir</pattern>
-<template>dilegalisir ya</template>
-</category>
-
-<category>
-<pattern>apa cover raport dibawa</pattern>
-<template>Kalau sudah diberikan oleh sekolah, bawa saja dengan covernya</template>
-</category>
-
-<category>
-<pattern>kartu e money boleh brizzi tidak</pattern>
-<template>boleh ya</template>
-</category>
-
-<category>
-<pattern>tagihan listrik yang mana</pattern>
-<template>Kamu tidak melampirkan bukti pembayarannya. Cuma surat keterangan saja</template>
-</category>
-
-<category>
-<pattern>bagaimana cara upload bukti memiliki kartu bpjs</pattern>
-<template>masukkan nomornya saja terlebih dahulu, nanti bawa saat verifikasi berkas</template>
-</category>
-
-<category>
-<pattern>cetak kartu dim karena data unvalid biasa daftar ulang</pattern>
-<template>Coba dilengkapi lagi datanya dan cetak ulang kartu DIMnya ya</template>
-</category>
-
-<category>
-<pattern>kartu bpjs asli warna nnti verifikasi masalah soal takut kira fotocopy an pihak verifikator</pattern>
-<template>Silakan dibawa aslinya, tidak dipermasalahkan saat verifikasi fisik.. Terimaksih..</template>
-</category>
-
-<category>
-<pattern>kartu identitas calon mahasiswa yang mana</pattern>
-<template>Kartu identitas bisa kartu pelajar ya</template>
-</category>
-
-<category>
-<pattern>foto apa yang dibawa foto memakai baju sma pakai baju putih polos </pattern>
-<template>Keduanya tidak masalah. Yang penting pasfoto formal</template>
-</category>
-
-<category>
-<pattern>kartu E Money nya saya harus beli di itera atau bank di sini</pattern>
-<template>Boleh dari Indomaret atau bank</template>
-</category>
-
-<category>
-<pattern>apa itu kartu identitas calon mahasiswa</pattern>
-<template>Bisa bawa kartu pelajar ya</template>
-</category>
-
-<category>
-<pattern>resi bisa tidak </pattern>
-<template>resi apa</template>
-</category>
-
-<category>
-<pattern>resi ktp</pattern>
-<template>boleh</template>
-</category>
-
-<category>
-<pattern>ftocpy surat bnn surat tdk buta warna ftocpy nya legalisir </pattern>
-<template>Tidak ya, Bawa yang asli saja dan fotokopinya ya</template>
-</category>
-
-<category>
-<pattern>bagaimana kalau tidak ada kartu bpjs</pattern>
-<template>Silahkan mendaftarkan dari ke BPJS yang menyertakan nama anda dalam kartu BPJS yang akan dibuat nantinya</template>
-</category>
-
-<category>
-<pattern>kartu e money boleh bri tidak</pattern>
-<template>boleh ya</template>
-</category>
-
-<category>
-<pattern>untuk surat keterangan lulus (skl) menggunakan surat keterangan un bagaimana</pattern>
-<template>Iya silahkan menggunakan surat keterangan terebut, namun harus difotokopi dan dilegalisir untuk nantinya diserahkan pada verifikasi berkas fisik.</template>
-</category>
-
-<category>
-<pattern>apa itu mandiri e money</pattern>
-<template>Itu adalah kartu yang bisa menyimpan uang (uang elektronik) yang merupakan produk dari beberapa bank. Namun, berbeda dengan ATM, karena jika ATM anda harus membuat rekening di bank tersebut, sedangkan Mandiri E-Money cukup membeli kartu saja dan melakukan top-up (pengisian uang ke kartu tersebut). Pembelian dan pengisian saldo kartu E-Money bisa dilakukan di Indomaret.</template>
-</category>
-
-<category>
-<pattern>formulir data diri dan persetujuan asrama belum bisa didownload</pattern>
-<template>Silahkan tunggu. Mohon cek website dim secara berkala </template>
-</category>
-
-<category>
-<pattern>cetak kartu itu juga dikasih jangka waktu apa masih bisa cetak kartu</pattern>
-<template>Maksudnya cetak kartu ini, cetak kartu apa ya? Jika cetak kartu peserta SNMPTN dan SBMPTN silahkan lgsg menghubungi Panitia Seleksi Pusat. Sedangkan jika cetak kartu DIM, maka silahkan lgsg menemui kami di Posko Penerimaan Mahasiswa Baru di Kampus ITERA.</template>
-</category>
-
-<category>
-<pattern>apa raport dilegalisir</pattern>
-<template>dilegalisir ya</template>
-</category>
-
-<category>
-<pattern>foto ditempel dimana pada bukti pengisian dim</pattern>
-<template>Di area foto yang telah disediakan, biasanya pada pojok kanan atas</template>
-</category>
-
-<category>
-<pattern>jika belum ada ijazah membawa surat pernyataan dari sekolah apa bisa</pattern>
-<template>Bisa, membawa surat keterangan lulus dari sekolah, serta jangan lupa di fotokopi dan dilegalisir.</template>
-</category>
-
-<category>
-<pattern>Apa itu bukti calon mahasiswa cara mendapatkan</pattern>
-<template>Bukti calon mahasiswa terkait apa ya? Jika terkait dengan identitas diri maka bisa berupa KTP, kartu pelajar, atau kartu identitas lainnya. Jika terkait dengan bukti pendaftaran di seleksi masuk, maka silahkan scan kartu seleksi masuk.</template>
-</category>
-
-<category>
-<pattern>apa pengumuman ukt dibertahukan via lewat sms</pattern>
-<template>Pengumuman bahwa hasil UKT sudah bisa diakses di DIM akan diumumkan melalui SMS juga, namun untuk informasi hasil UKT yang diperoleh untuk setiap mahasiswa bisa lgsg di akses pada laman DIM</template>
-</category>
-
-<category>
-<pattern>bertanya penerima bidikmisi persyaratan data diri bidimisi diterima sekolah menengah atas atau calon mahasiswa baru mendaftarkan bidimisi </pattern>
-<template>Itu informasi yang berkaitan dengan Penerima Bidikmisi pada Calon Mahasiswa Baru yang akan mendaftarkan diri ke Perguruan Tinggi melalui Bidikmisi.</template>
-</category>
-
-<category>
-<pattern>apakah bisa diundur mundur menyusul nyusul mundur tidak</pattern>
-<template>Kami sampaikan ke panitia dahulu</template>
-</category>
-
-<category>
-<pattern>pengumuman ukt di website mana</pattern>
-<template>silakan memantau halaman DIM, USM, dan email ya.</template>
+<pattern>foto menggunakan baju sekolah diperbolehkan </pattern>
+<template>silahkan, asalkan wajah terlihat jelas, dsb</template>
 </category>
 
 <category>
@@ -316,5 +181,9 @@
 <template>baik baik saja</template>
 </category>
 
->>>>>>> f8b9766b8946305d4585c748224af45108dae1d2
+<category>
+<pattern>gimana cara mengisi id pelanggan tidak pakai pln </pattern>
+<template>silahkan dikosongkan</template>
+</category>
+
 </aiml>
