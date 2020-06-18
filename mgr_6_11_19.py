@@ -1,5 +1,6 @@
 import re
 import aiml
+import csv
 
 cl = "</aiml>"
 term = "<pattern>"
@@ -122,16 +123,22 @@ def get_respon(filename, question): #parameter berupa filename (string) dan ques
     for v in b: #mengisi variabel b ke dalam v
         value = get_percent(v,question) #menyimpan nilai similaritas ke dalam value
         # print("Pattern = ",v,"\nNilai = ",value,"\n") 
-        if(max1 < value): #jika value lebih besar dari nilai tertinggi saat ini
+        if(max1 <= value): #jika value lebih besar dari nilai tertinggi saat ini
             #print("v = ",v,"value = ",value) 
             max1 = value #nilai tertinggi saat ini berubah
             v1 = v #variabel string pattern berubah
-    if(max1 > threshold): #jika nilai similaritas lebih dari threshold
+    if(max1 >= threshold): #jika nilai similaritas lebih dari threshold
         result = (kernel.respond(v1),v1,max1) #mengabil respon/template dengan pattern v1 dalam kernel 
     else: #jika tidak ditemukan kemiripan atau nilai similaritas kurang dari threshold
         result = (1)
         #pertanyaan disimpan di database untuk dikirimkan ke pakar
     return result
+
+# with open('hasil_ask.csv','w') as f: #untuk menulis hasil test ke csv
+#     writer = csv.writer(f)
+#     result_test = print_pattern("ask.aiml")
+    
+#     writer.writerow(result_test)
 
 def retrieve2(question):
     max1 = max2 = max3 = 0.00
